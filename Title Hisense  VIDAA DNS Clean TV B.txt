@@ -1,0 +1,131 @@
+ Title: Hisense / VIDAA DNS Clean TV Blocklist — Extended Annotated Edition
+! Format: AdGuard Home / AdGuard DNS blocklist
+! Maintainer: ipanalytics
+! Purpose: Block advertising, recommendations, telemetry, and optional cloud services used by Hisense / VIDAA TVs.
+!
+! Syntax:
+!   ||example.com^     = block the domain and all of its subdomains.
+!   ! ||example.com^   = keep the rule documented in the file, but disabled.
+!
+! IMPORTANT:
+! Hisense does not publicly document the exact purpose of every internal hostname.
+! The annotations below are based on endpoint naming, earlier device tests,
+! AdGuard Home DNS query logs, and observed VIDAA behavior.
+! Where a purpose is not confirmed, the description explicitly says that it is inferred.
+!
+! 2026 REAL-DEVICE TESTED UPDATE:
+! The additional rules marked as observed below were captured from a current-generation
+! Hisense / VIDAA television and are intentionally ACTIVE. Comment lines describe them,
+! but the actual blocking lines do NOT begin with "!".
+
+!
+! =====================================================================
+! GROUP 1 — ADVERTISING / IMPRESSIONS / PROMOTIONAL ASSETS
+! =====================================================================
+!
+! This group blocks the most obvious advertising endpoints, campaign assets,
+! impression reporting, shopping cards, and other promotional material.
+! It normally produces the most visible cleanup of the VIDAA home screen.
+!
+! A possible side effect is delayed application artwork after startup:
+! VIDAA may first render local placeholders, wait for a blocked remote resource,
+! and load an alternative cached or fallback icon several seconds later.
+!
+! ad-cmp: inferred advertising or campaign-management component.
+||ad-cmp.hismarttv.com^
+!
+! ad-imp: inferred advertising-impression reporting endpoint.
+||ad-imp.hismarttv.com^
+!
+! imp-cmp: inferred impression or campaign reporting component.
+||imp-cmp.hismarttv.com^
+!
+! mz-impr: inferred impression-tracking endpoint; the "mz" prefix is undocumented.
+||mz-impr.hismarttv.com^
+!
+! ad-download: inferred download host for advertising images, video, or campaign assets.
+||ad-download.hismarttv.com^
+!
+! ad-download-mam: inferred advertising asset delivery through a media asset management service.
+||ad-download-mam.hismarttv.com^
+!
+! recmd-cmp: inferred recommendation or promotional campaign component.
+||recmd-cmp.hismarttv.com^
+!
+! recmd-thirdcmp: inferred third-party recommendation or campaign component.
+||recmd-thirdcmp.hismarttv.com^
+!
+! carousel-channel: inferred source of promotional channel carousels and home-screen content rows.
+||carousel-channel.hismarttv.com^
+!
+! picture-shoppingguider: inferred image host for shopping-guide or commercial cards.
+||picture-shoppingguider.hismarttv.com^
+!
+! api-shoppingguider: inferred API for shopping-guide data and commercial recommendations.
+||api-shoppingguider.hismarttv.com^
+!
+! api-shoppingguider-dcdn: inferred CDN endpoint for shopping-guide data and images.
+||api-shoppingguider-dcdn.hismarttv.com^
+!
+! shop-launcher: inferred commercial or shopping section used by the launcher.
+||shop-launcher.hismarttv.com^
+!
+! abtest-tv: A/B testing and remote feature-experiment endpoint for TV firmware and UI variants.
+||abtest-tv.vidaahub.com^
+!
+! bo.ads-privacy: advertising privacy, consent, and advertising-policy backend.
+||bo.ads-privacy.vidaahub.com^
+
+!
+! device-ecom: inferred device-linked e-commerce, shopping, or commercial-content backend.
+||device-ecom.vidaahub.com^
+!
+! acr.unruly.co: third-party automated content recognition and advertising-data endpoint associated with Unruly / Nexxen.
+||acr.unruly.co^
+
+! =====================================================================
+! GROUP 2 — RECOMMENDATIONS / HOME FEEDS / CONTENT DISCOVERY
+! =====================================================================
+!
+! This group blocks remote recommendation feeds and discovery services used by VIDAA Home.
+! It may remove recommendation rows, promoted content, and content suggestions.
+!
+! A possible side effect is an empty placeholder or a short delay while the launcher
+! waits for a blocked request to time out before using cached or fallback data.
+!
+! recommender-launcher: inferred central recommendation service for the VIDAA launcher.
+||recommender-launcher.hismarttv.com^
+!
+! recmd-launcher: inferred abbreviated recommendation service used by the launcher.
+||recmd-launcher.hismarttv.com^
+!
+! recommendation-launcher: inferred alternative recommendation hostname for the launcher.
+||recommendation-launcher.hismarttv.com^
+!
+! content-recommendation: inferred recommendation service for films, channels, and applications.
+||content-recommendation.hismarttv.com^
+!
+! api-recommendation: inferred general recommendation API.
+||api-recommendation.hismarttv.com^
+!
+! api-recommendation-eu: inferred European regional recommendation API.
+||api-recommendation-eu.hismarttv.com^
+!
+! api-recommendation-em: inferred recommendation API for the EM regional service group.
+||api-recommendation-em.hismarttv.com^
+!
+! launcher-recommend: inferred launcher recommendation feed.
+||launcher-recommend.hismarttv.com^
+!
+! detail-ui-eu: European UI metadata and detailed interface-content endpoint.
+||detail-ui-eu.vidaahub.com^
+
+!
+! sttc-az-recommend-ui: static assets for VIDAA recommendation cards and recommendation UI.
+||sttc-az-recommend-ui.vidaahub.com^
+!
+! recommend-ui-eu: inferred European recommendation-UI backend for VIDAA Home.
+||recommend-ui-eu.vidaahub.com^
+!
+! base-ai: shared VIDAA AI backend, likely used for recommendations, ranking, personalization, or automated UI functions.
+||base-ai.vidaahub.com^
