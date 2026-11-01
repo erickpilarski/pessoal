@@ -129,3 +129,302 @@
 !
 ! base-ai: shared VIDAA AI backend, likely used for recommendations, ranking, personalization, or automated UI functions.
 ||base-ai.vidaahub.com^
+=====================================================================
+! GROUP 10 — CORE HOME / LAUNCHER / LAYOUT SERVICES
+! MIXED: OBSERVED 2026 RULES ACTIVE; OTHER OPTIONAL RULES DISABLED
+! =====================================================================
+!
+! These endpoints may provide VIDAA Home structure, layout, application ordering,
+! icons, cards, launcher resources, and other core UI data.
+!
+! Blocking them may clean the interface more aggressively, but can also cause:
+! - blank placeholders;
+! - delayed YouTube or Netflix icons;
+! - a partially empty Home screen;
+! - repeated loading;
+! - a 3–5 second delay while the launcher waits for a timeout or fallback.
+!
+! home-launcher: main VIDAA Home backend.
+! ||home-launcher.hismarttv.com^
+!
+! cdn-home-launcher: CDN for VIDAA Home images and resources.
+! ||cdn-home-launcher.hismarttv.com^
+!
+! layout-launcher: layout and placement data for Home elements.
+! ||layout-launcher.hismarttv.com^
+!
+! default-cmp: inferred default launcher component or campaign configuration.
+! ||default-cmp.hismarttv.com^
+!
+! v2-app-launcher: version 2 API for launcher application lists.
+! ||v2-app-launcher.hismarttv.com^
+!
+! v2-api-channel-launcher: version 2 API for launcher channels and cards.
+! ||v2-api-channel-launcher.hismarttv.com^
+!
+! icon-launcher: inferred source of launcher application icons.
+! This is a possible explanation for delayed YouTube and Netflix icons after startup.
+! ||icon-launcher.hismarttv.com^
+!
+! pic-launcher: inferred source of launcher artwork and image assets.
+! This is a possible explanation for blank placeholders during the first seconds after startup.
+! ||pic-launcher.hismarttv.com^
+!
+! resource-launcher: inferred general resource endpoint for Home and launcher assets.
+! ||resource-launcher.hismarttv.com^
+
+!
+! tvmodules-vidaa: module manifests, packages, or remotely delivered VIDAA TV components.
+||tvmodules-vidaa.vidaahub.com^
+!
+! param-ui-eu: European UI parameters and remote interface configuration.
+||param-ui-eu.vidaahub.com^
+!
+! layout-ui-eu: European Home-screen and interface layout definitions.
+||layout-ui-eu.vidaahub.com^
+!
+! static-ui: shared static UI assets such as images, scripts, styles, and interface resources.
+||static-ui.vidaahub.com^
+!
+! home-ui-eu: European core VIDAA Home-screen service.
+||home-ui-eu.vidaahub.com^
+!
+! search-ui-eu: European VIDAA search-interface backend and search UI configuration.
+||search-ui-eu.vidaahub.com^
+
+! =====================================================================
+! GROUP 11 — TIME / REGION / CONNECTIVITY
+! MIXED: OBSERVED 2026 RULES ACTIVE; OTHER OPTIONAL RULES DISABLED
+! =====================================================================
+!
+! These services may provide time synchronization, regional routing,
+! internet-connectivity checks, or backend selection.
+!
+! They remain disabled because blocking them can affect the clock, TLS validation,
+! EPG data, regional applications, or service availability.
+!
+! synctime: system-time synchronization.
+! ||synctime.hismarttv.com^
+!
+! tvgslb-ntp: inferred NTP or globally load-balanced time service.
+! ||tvgslb-ntp.hismarttv.com^
+!
+! ntp-jp: Japanese regional NTP endpoint that may also be used as a fallback.
+! ||ntp-jp.hismarttv.com^
+!
+! network-test: internet-connectivity test endpoint.
+! ||network-test.hismarttv.com^
+!
+! connectivity-check: inferred captive-portal or internet-connectivity detection endpoint.
+! ||connectivity-check.hismarttv.com^
+!
+! region: inferred regional identification and backend-selection service.
+! ||region.hismarttv.com^
+!
+! geo: inferred IP-based geolocation or regional-routing service.
+! ||geo.hismarttv.com^
+
+!
+! domain.vidaahub.com: inferred VIDAA service-discovery, domain-routing, or backend-selection endpoint.
+||domain.vidaahub.com^
+!
+! time-bas-eu: inferred European base-time or time-synchronization service.
+||time-bas-eu.vidaahub.com^
+!
+! geo-bas-eu: inferred European geolocation, region-selection, or geo-routing service.
+||geo-bas-eu.vidaahub.com^
+
+! =====================================================================
+! GROUP 12 — DRM / MEDIA / CONTENT DELIVERY
+! MIXED: OBSERVED 2026 RULES ACTIVE; OTHER OPTIONAL RULES DISABLED
+! =====================================================================
+!
+! These endpoints may support DRM, playback authorization, certificates,
+! content metadata, streaming manifests, or media delivery.
+!
+! Blocking them may affect Netflix, VIDAA Channels, streaming applications,
+! HDR playback, Dolby Vision playback, or protected content.
+!
+! drm: inferred DRM-related service.
+! ||drm.hismarttv.com^
+!
+! widevine: inferred Widevine-related endpoint.
+! ||widevine.hismarttv.com^
+!
+! certificate: inferred certificate-distribution or trust-chain endpoint.
+! ||certificate.hismarttv.com^
+!
+! media: inferred general media service.
+! ||media.hismarttv.com^
+!
+! content: inferred content metadata or catalog service.
+! ||content.hismarttv.com^
+!
+! cdn: broad Hisense CDN rule; intentionally disabled because it is too general.
+! ||cdn.hismarttv.com^
+
+!
+! m.media-amazon.com: Amazon media and image CDN used by Amazon content and potentially embedded promotional assets.
+||m.media-amazon.com^
+!
+! hisense-0ba453d1.prod.partner.netflix.net: Hisense-specific Netflix partner integration endpoint for provisioning, certification, activation, metadata, or playback integration.
+||hisense-0ba453d1.prod.partner.netflix.net^
+
+! =====================================================================
+! GROUP 13 — THIRD-PARTY TV / HBBTV / FAST-SERVICE RULES
+! ACTIVE — OBSERVED IN A TV-LABELLED CUSTOM LIST
+! =====================================================================
+!
+! These rules were extracted from the maintainer's separate custom DNS list.
+! They are likely requested by a television, HbbTV application, FAST channel, or
+! TV-specific streaming app, but are not confirmed as VIDAA platform endpoints.
+! They are active because this list is intended to remove HbbTV, Red Button,
+! connected-TV advertising, and measurement traffic. Allow individual domains if
+! a required broadcaster or application stops working.
+!
+! ads-privacy.vidaahub.com: inferred VIDAA advertising-privacy or consent endpoint.
+||ads-privacy.vidaahub.com^
+!
+! drm-vss.vidaahub.com: inferred VIDAA video-security or DRM service; may affect protected playback.
+||drm-vss.vidaahub.com^
+!
+! alphonso.tv: third-party automated-content-recognition and TV advertising-data service.
+||alphonso.tv^
+!
+! ads.spotx.tv: third-party connected-TV advertising delivery endpoint.
+||ads.spotx.tv^
+!
+! api.thetake.com: inferred visual-shopping or product-recognition API used by TV content.
+||api.thetake.com^
+!
+! control-zoo-dai-default.tvinteractive.tv: inferred dynamic-ad-insertion control endpoint for TV Interactive.
+||control-zoo-dai-default.tvinteractive.tv^
+!
+! control.tvinteractive.tv: inferred TV Interactive control or configuration endpoint.
+||control.tvinteractive.tv^
+!
+! control2.tvinteractive.tv: inferred alternate TV Interactive control or configuration endpoint.
+||control2.tvinteractive.tv^
+!
+! mcp.tvinteractive.tv: inferred TV Interactive media or campaign endpoint.
+||mcp.tvinteractive.tv^
+!
+! tvmeta-dynamic.tvinteractive.tv: inferred dynamic TV metadata or advertising endpoint.
+||tvmeta-dynamic.tvinteractive.tv^
+!
+! de.ioam.de: German audience-measurement endpoint (INFOnline / ioam).
+||de.ioam.de^
+!
+! script.ioam.de: script delivery for German audience measurement (INFOnline / ioam).
+||script.ioam.de^
+!
+! hbbtv-1.eurosport.com: Eurosport HbbTV application endpoint.
+||hbbtv-1.eurosport.com^
+!
+! hbbtv-extern-fe01.sim-technik.de: HbbTV platform endpoint; exact broadcaster use is unconfirmed.
+||hbbtv-extern-fe01.sim-technik.de^
+!
+! hbbtv-track.redbutton.de: Red Button HbbTV tracking endpoint.
+||hbbtv-track.redbutton.de^
+!
+! hbbtv01p.anixe.net: ANIXE HbbTV application endpoint.
+||hbbtv01p.anixe.net^
+!
+! hbbtvapp.sonnenklar.tv: sonnenklar.TV HbbTV application endpoint.
+||hbbtvapp.sonnenklar.tv^
+!
+! hse-ctv.com: inferred HSE connected-TV service endpoint.
+||hse-ctv.com^
+!
+! hse24.tvtelemetrie.de: HSE24 television telemetry endpoint.
+||hse24.tvtelemetrie.de^
+!
+! p-hbbtv.superrtl.de: Super RTL HbbTV application endpoint.
+||p-hbbtv.superrtl.de^
+!
+! redbutton-adproxy-lb-prod.redbutton.de: Red Button advertising proxy endpoint.
+||redbutton-adproxy-lb-prod.redbutton.de^
+!
+! redbutton-lb-prod.redbutton.de: Red Button HbbTV load-balancer endpoint.
+||redbutton-lb-prod.redbutton.de^
+!
+! redbutton.sim-technik.de: Red Button HbbTV service endpoint.
+||redbutton.sim-technik.de^
+!
+! smartclip.com: third-party connected-TV advertising technology domain.
+||smartclip.com^
+!
+! smartclip.net: third-party connected-TV advertising technology domain.
+||smartclip.net^
+!
+! start.digitaltext.rtl.de: RTL HbbTV or digital-text application endpoint.
+||start.digitaltext.rtl.de^
+!
+! trvdp.com: third-party TV advertising or video-data endpoint; exact purpose is unconfirmed.
+||trvdp.com^
+!
+! =====================================================================
+! GROUP 14 — THIRD-PARTY TV-APP / FAST-CONTENT BLOCKING
+! ACTIVE — DISABLE UNUSED TV APPS, FAST CHANNELS, AND THEIR BACKENDS
+! =====================================================================
+!
+! These names were explicitly observed in rules limited to the TV client. They
+! are active because the intended setup does not use these applications or
+! online channels. They may serve sign-in, catalogs, artwork, or media delivery.
+!
+! ssai.aniview.com: server-side advertising insertion for video or FAST streams.
+||ssai.aniview.com^
+!
+! prod-fast-pmd-cdn77.cdn.rakuten.tv: Rakuten TV FAST-channel media delivery endpoint.
+||prod-fast-pmd-cdn77.cdn.rakuten.tv^
+!
+! imgcdn.kidoodle.tv: Kidoodle.TV artwork or application-content CDN.
+||imgcdn.kidoodle.tv^
+!
+! contentful-asset-proxy.sd.indazn.com: DAZN asset-proxy CDN endpoint.
+||contentful-asset-proxy.sd.indazn.com^
+!
+! lrd-tv-lp-carousel-live.ar.indazn.com: DAZN TV live-carousel content endpoint.
+||lrd-tv-lp-carousel-live.ar.indazn.com^
+!
+! polling.pubby.indazn.com: DAZN polling or real-time client-service endpoint.
+||polling.pubby.indazn.com^
+!
+! resource-strings.acc.indazn.com: DAZN application strings or localization endpoint.
+||resource-strings.acc.indazn.com^
+!
+! authentication-prod.ar.indazn.com: DAZN authentication endpoint; blocking prevents sign-in or playback.
+||authentication-prod.ar.indazn.com^
+!
+! tv.dazn.com: DAZN television application endpoint.
+||tv.dazn.com^
+!
+! img.haystack.tv: Haystack News application image CDN.
+||img.haystack.tv^
+!
+! api.haystack.tv: Haystack News application API.
+||api.haystack.tv^
+!
+! =====================================================================
+! GROUP 15 — ROOT-DOMAIN WILDCARDS
+! DISABLED BY DEFAULT — VERY AGGRESSIVE
+! =====================================================================
+!
+! These rules block complete cloud-service namespaces.
+! They are retained only as manual, aggressive options.
+!
+! Activating them may disable Home, the application store, updates,
+! recommendations, authentication, icons, and most cloud functionality.
+!
+! Block every hostname under hismarttv.com.
+! ||hismarttv.com^
+!
+! Block every hostname under vidaahub.com.
+! ||vidaahub.com^
+!
+! Block every hostname under vidaa.com.
+! ||vidaa.com^
+
+! =====================================================================
+! END OF LIST
+! =====================================================================
